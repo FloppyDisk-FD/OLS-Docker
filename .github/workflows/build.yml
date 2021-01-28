@@ -23,7 +23,7 @@ jobs:
           OLS_VERSION: 1.6.19
           PHP_VERSION: lsphp73
           OLS_VERSION2: 1.7.8
-          PHP_VERSION: lsphp74
+          PHP_VERSION2: lsphp74
         run: |
           cd template && ./build.sh --ols $OLS_VERSION --php $PHP_VERSION && \
           ./build.sh --ols $OLS_VERSION2 --php $PHP_VERSION2  
