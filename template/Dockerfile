@@ -4,22 +4,22 @@ ARG OLS_VERSION
 ARG PHP_VERSION
 
 
-RUN apt-get update && apt-get install wget curl cron tzdata -y
+RUN apt-get update && apt-get install apt-utils wget curl cron tzdata -y
 
-RUN wget https://openlitespeed.org/preuse/openlitespeed-$OLS_VERSION.tgz && \
-    tar xzf openlitespeed-$OLS_VERSION.tgz && cd openlitespeed && ./install.sh && \
-    echo 'cloud-docker' > /usr/local/lsws/PLAT && rm -rf /openlitespeed && rm /openlitespeed-$OLS_VERSION.tgz
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 011AA62DEDA1F085 && \
+    wget -O - http://rpms.litespeedtech.com/debian/enable_lst_debian_repo.sh | bash
+
+RUN wget https://openlitespeed.org/packages/openlitespeed-$OLS_VERSION.src.tgz && \
+    tar xzf openlitespeed-$OLS_VERSION.src.tgz && cd openlitespeed && ./install.sh && \
+    echo 'cloud-docker' > /usr/local/lsws/PLAT && rm -rf /openlitespeed && rm /openlitespeed-$OLS_VERSION.src.tgz
 
 RUN apt-get install mysql-client $PHP_VERSION $PHP_VERSION-common $PHP_VERSION-mysql $PHP_VERSION-opcache \
     $PHP_VERSION-curl $PHP_VERSION-json $PHP_VERSION-imagick $PHP_VERSION-redis $PHP_VERSION-memcached $PHP_VERSION-intl -y
 
 RUN wget -O /usr/local/lsws/admin/misc/lsup.sh \
     https://raw.githubusercontent.com/litespeedtech/openlitespeed/master/dist/admin/misc/lsup.sh && \
-    chmod +x /usr/local/lsws/admin/misc/lsup.sh
-
-RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
-	chmod +x wp-cli.phar && mv wp-cli.phar /usr/bin/wp && \
-	ln -s /usr/local/lsws/$PHP_VERSION/bin/php /usr/bin/php
+    chmod +x /usr/local/lsws/admin/misc/lsup.sh && \
+    ln -s /usr/local/lsws/$PHP_VERSION/bin/php /usr/bin/php
 
 RUN wget -O -  https://get.acme.sh | sh
 
