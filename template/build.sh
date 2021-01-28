@@ -40,7 +40,7 @@ build_image(){
 
 test_image(){
     ID=$(docker run -d ${BUILDER}/${REPO}:${1}-${2})
-    docker exec -it ${ID} su -c 'mkdir -p /var/www/vhosts/localhost/html/ \
+    docker exec ${ID} su -c 'mkdir -p /var/www/vhosts/localhost/html/ \
     && echo "<?php phpinfo();" > /var/www/vhosts/localhost/html/index.php \
     && /usr/local/lsws/bin/lswsctrl restart'
     HTTP=$(docker exec -it ${ID} curl -s -o /dev/null -Ik -w "%{http_code}" http://localhost)
