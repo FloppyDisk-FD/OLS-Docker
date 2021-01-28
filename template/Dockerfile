@@ -6,8 +6,7 @@ ARG PHP_VERSION
 
 RUN apt-get update && apt-get install apt-utils wget curl cron tzdata -y
 
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 011AA62DEDA1F085 && \
-    wget -O - http://rpms.litespeedtech.com/debian/enable_lst_debian_repo.sh | bash
+RUN wget -O - http://rpms.litespeedtech.com/debian/enable_lst_debian_repo.sh | bash
 
 RUN wget https://openlitespeed.org/packages/openlitespeed-$OLS_VERSION.src.tgz && \
     tar xzf openlitespeed-$OLS_VERSION.src.tgz && cd openlitespeed && ./install.sh && \
