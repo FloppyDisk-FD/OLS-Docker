@@ -20,9 +20,7 @@ jobs:
 
       - name: Build Images
         env:
-          OLS_VERSION: 1.6.19
-          PHP_VERSION: lsphp73
-          OLS_VERSION: 1.7.8
-          PHP_VERSION: lsphp74 
+          OLS_VERSION: 1.6.19 1.7.8
+          PHP_VERSION: lsphp73 lsphp74 
         run: |
           cd template && ./build.sh --ols $OLS_VERSION --php $PHP_VERSION
