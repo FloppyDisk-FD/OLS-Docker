@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 OLS_VERSION=''
 PHP_VERSION=''
-PUSH=''
+PUSH='true'
 CONFIG=''
-TAG=''
+TAG='latest'
 BUILDER='heremoryoo'
 REPO='openlitespeed'
 EPACE='        '
