@@ -43,8 +43,8 @@ test_image(){
     docker exec ${ID} su -c 'mkdir -p /var/www/vhosts/localhost/html/ \
     && echo "<?php phpinfo();" > /var/www/vhosts/localhost/html/index.php \
     && /usr/local/lsws/bin/lswsctrl restart'
-    HTTP=$(docker exec -it ${ID} curl -s -o /dev/null -Ik -w "%{http_code}" http://localhost)
-    HTTPS=$(docker exec -it ${ID} curl -s -o /dev/null -Ik -w "%{http_code}" https://localhost)
+    HTTP=$(docker exec ${ID} curl -s -o /dev/null -Ik -w "%{http_code}" http://localhost)
+    HTTPS=$(docker exec ${ID} curl -s -o /dev/null -Ik -w "%{http_code}" https://localhost)
     docker kill ${ID}
     if [[ "${HTTP}" != "200" || "${HTTPS}" != "200" ]]; then
         echo '[X] Test failed!'
