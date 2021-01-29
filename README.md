@@ -1,4 +1,5 @@
 # OpenLiteSpeed Docker 容器
+![CI](https://github.com/FloppyDisk-FD/OLS-Docker/workflows/CI/badge.svg)
 # 使用方法
 1. 安装Docker
 2. 拉取镜像
