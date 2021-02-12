@@ -20,6 +20,9 @@ RUN wget -O /usr/local/lsws/admin/misc/lsup.sh \
     chmod +x /usr/local/lsws/admin/misc/lsup.sh && \
     ln -s /usr/local/lsws/$PHP_VERSION/bin/php /usr/bin/php
 
+RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
+	chmod +x wp-cli.phar && mv wp-cli.phar /usr/bin/wp && \
+
 RUN wget -O -  https://get.acme.sh | sh
 
 EXPOSE 7080
