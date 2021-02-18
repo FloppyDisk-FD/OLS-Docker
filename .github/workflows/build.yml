@@ -35,4 +35,4 @@ jobs:
           ./build.sh --ols $OLS_VERSION2 --php $PHP_VERSION3 && \
           ./build.sh --ols $OLS_VERSION3 --php $PHP_VERSION && \
           ./build.sh --ols $OLS_VERSION3 --php $PHP_VERSION2 && \
-          ./build.sh --ols $OLS_VERSION3 --php $PHP_VERSION3 && \
+          ./build.sh --ols $OLS_VERSION3 --php $PHP_VERSION3
