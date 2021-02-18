@@ -22,7 +22,7 @@ jobs:
         env:
           OLS_VERSION: 1.6.19
           OLS_VERSION2: 1.7.8
-          $OLS_VERSION3: 1.7.9
+          OLS_VERSION3: 1.7.9
           PHP_VERSION: lsphp73
           PHP_VERSION2: lsphp74
           PHP_VERSION3: lsphp72
